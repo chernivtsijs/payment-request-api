@@ -663,25 +663,30 @@ block slides
                         // …
                     }
 
-    article.center.code-2
+    article.center.code-3
         .wrapper
             pre
                 code.js.
                     paymentRequest.on('token', async (event) => {
-                        const { token } = event;
+                        const {
+                            token,
+                            payerPhone:phone,
+                            payerName:name,
+                            payerEmail:email,
+                        } = event;
                         const response = await fetch('/order', {
                             method: 'POST'
-                            , body: JSON.stringify({ token, sku })
+                            , body: JSON.stringify({ token, sku, phone, email, name })
                             , headers: {'content-type': 'application/json'}
                         });
                     });
 
-    article.center.code-2
+    article.center.code-1
         .wrapper
             pre
                 code.js.
                     const order = await stripe.orders.create({
-                      email: token.email
+                      email,
                       , currency: sku.currency
                       , items: [{
                           type: 'sku'
