@@ -829,6 +829,20 @@ html body section#slides article iframe.half:last-child {
   font-style: normal;
 }
 
+article.error {
+  background-color: #c00;
+}
+article.error >.wrapper {
+  text-align: left;
+  font-size: 100px;
+  line-height: 1.5;
+  font-weight: bold;
+  color: #fff;
+}
+.developer {
+  font-size: 299px;
+  font-weight: bold;
+}
 ul.need li {
   font-size: 64px;
   line-height: 72px;
@@ -838,6 +852,12 @@ ul.need li {
 }
 .illustration--title {
   background-image: url("../images/money.jpeg");
+}
+.illustration--apple {
+  background-image: url("../images/appleit.jpg");
+  background-size: contain;
+  background-position: -40px 50%;
+  background-color: #000;
 }
 .illustration--debug {
   background-image: url("../images/debug.jpg");
@@ -883,6 +903,12 @@ ul.need li {
   bottom: 100px;
   right: 200px;
 }
+.screen--register {
+  background-image: url("../images/mid.png");
+}
+.screen--certificate {
+  background-image: url("../images/certificate.png");
+}
 .screen--letter {
   background-image: url("../images/letter.png");
 }
@@ -905,8 +931,17 @@ ul.need li {
 .screen--ap1 {
   background-image: url("../images/ap1.png");
 }
+.screen--ap3 {
+  background-image: url("../images/iphone.jpg");
+}
 .screen--ap2 {
   background-image: url("../images/ap2.png");
+}
+.screen--ap2-a {
+  background-image: url("../images/addCard.png");
+}
+.screen--ap2-b {
+  background-image: url("../images/pay.png");
 }
 .screen--gp1 {
   background-image: url("../images/gp1.jpg");
@@ -1197,6 +1232,28 @@ article.cloud.cloud--title h1:after {
           transform: rotate(-130deg);
   -webkit-transform-origin: 10px -247px;
           transform-origin: 10px -247px;
+}
+article.cloud.cloud--apple h1 {
+  width: 350px;
+  height: 350px;
+  right: 160px;
+  top: 20px;
+  line-height: 350px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: rgba(255,255,255,0.95);
+}
+article.cloud.cloud--apple h1 .wrapper {
+  font-size: 48px;
+  line-height: 56px;
+  white-space: nowrap;
+}
+article.cloud.cloud--apple h1:after {
+  -webkit-transform: rotate(50deg);
+          transform: rotate(50deg);
+  -webkit-transform-origin: 10px -173px;
+          transform-origin: 10px -173px;
 }
 article.cloud.cloud--debug h1 {
   width: 350px;

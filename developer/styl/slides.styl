@@ -1,3 +1,16 @@
+article.error
+    background-color #c00
+    & >.wrapper
+        text-align left
+        font-size 100px
+        line-height 1.5
+        font-weight bold
+        color #fff
+
+.developer
+    font-size 299px
+    font-weight bold
+
 ul.need li
     font-size 64px
     line-height 72px
@@ -7,6 +20,11 @@ ul.need li
         background-image url(../images/grid-scheme.png)
     &--title
         background-image url(../images/money.jpeg)
+    &--apple
+        background-image url(../images/appleit.jpg)
+        background-size contain
+        background-position -40px 50%
+        background-color #000
     &--debug
         background-image url(../images/debug.jpg)
         background-size 105% 105%
@@ -47,6 +65,10 @@ ul.need li
     right 200px
 
 .screen
+    &--register
+        background-image url(../images/mid.png)
+    &--certificate
+        background-image url(../images/certificate.png)
     &--letter
         background-image url(../images/letter.png)
     &--stripe-delawer
@@ -62,8 +84,14 @@ ul.need li
         background-size 80% auto
     &--ap1
         background-image url(../images/ap1.png)
+    &--ap3
+        background-image url(../images/iphone.jpg)
     &--ap2
         background-image url(../images/ap2.png)
+    &--ap2-a
+        background-image url(../images/addCard.png)
+    &--ap2-b
+        background-image url(../images/pay.png)
     &--gp1
         background-image url(../images/gp1.jpg)
     &--gp2
@@ -274,6 +302,25 @@ article.cloud.cloud--title
         &:after
             transform rotate(-130deg)
             transform-origin 10px -247px
+
+article.cloud.cloud--apple
+    h1
+        width 350px
+        height 350px
+        right 160px
+        top 20px
+        line-height 350px
+        text-align center
+        box-sizing border-box
+        background-color rgba(255,255,255,.95)
+        .wrapper
+            font-size 48px
+            line-height 56px
+            white-space nowrap
+        &:after
+            transform rotate(50deg)
+            transform-origin 10px -173px
+
 
 article.cloud.cloud--debug
     h1

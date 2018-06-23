@@ -74,7 +74,7 @@ const check = async function () {
     request = new PaymentRequest(methodData, details, options);
 };
 button.addEventListener('click', check);
-</script></article><article class="center"><div class="wrapper"><ul class="need"><li> methodData</li><li> details</li><li> methooptionsdData</li></ul></div></article><article class="center code-6"><div class="wrapper"><pre><code class="html">&lt;button id="pay"&gt;Купить&lt;/button &gt;
+</script></article><article class="center"><div class="wrapper"><ul class="need"><li> methodData</li><li> details</li><li> options</li></ul></div></article><article class="center code-6"><div class="wrapper"><pre><code class="html">&lt;button id="pay"&gt;Купить&lt;/button &gt;
 </code></pre></div></article><article class="center code-6"><div class="wrapper"><pre><code class="js">const methodData = [{
     supportedMethods: "basic-card",
 }];
@@ -97,7 +97,7 @@ button.addEventListener('click', check);
     label: "Вотлшебный Говорящий Медведь-Проститутка",
     amount: {
       currency: "USD",
-      value: "5.00"
+      value: "0.99"
     },
   },</code></pre></div></article><article class="center code-1"><div class="wrapper"><pre><code class="js">{
   label: "Cвинка",
@@ -109,7 +109,7 @@ button.addEventListener('click', check);
     label: "Всего",
     amount: {
       currency: "USD",
-      value: "8.00"
+      value: "3.99"
     },
   },
 };</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="js">const options = {
@@ -138,7 +138,73 @@ button.addEventListener('click', pay);
     shippingAddress: null,
     shippingOption: null,
 }
-</code></pre></div></article><article class="screen screen--bcp overlay"><div class="overlay__abstract overlay__abstract--right"><h3 class="overlay__title">Basic Card Payment</h3><img class="overlay__qr" src="images/bcp.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://www.w3.org/TR/payment-method-basic-card/" data-click>https://www.w3.org/TR/payment-method-basic-card/</a></p></div></article><article class="screen screen--pmi overlay"><div class="overlay__abstract overlay__abstract--right"><h3 class="overlay__title">Payment Method Identifiers</h3><img class="overlay__qr" src="images/pmi.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://www.w3.org/TR/payment-method-id/" data-click>https://www.w3.org/TR/payment-method-id/</a></p></div></article><article class="screen screen--pmm overlay"><div class="overlay__abstract overlay__abstract--right"><h3 class="overlay__title">Payment Method Manifest</h3><img class="overlay__qr" src="images/pmi.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://www.w3.org/TR/payment-method-manifest/" data-click>https://www.w3.org/TR/payment-method-manifest/</a></p></div></article><article class="screen screen--stripe"></article><article class="screen screen--stripe-atlas"></article><article class="screen screen--stripe-delawer"></article><article class="screen screen--stripe-product"></article><article class="screen screen--moto overlay"><div class="overlay__abstract overlay__abstract--right"><h3 class="overlay__title">MOTO.COURSES</h3><img class="overlay__qr" src="images/motoc.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://moto.courses/" data-click>https://moto.courses/</a></p><p><a class="overlay__link" href="https://github.com/SilentImp/moto.courses" data-click>https://github.com/SilentImp/moto.courses</a></p></div></article><article class="center code-0"><div class="wrapper"><pre><code class="html">&lt;script src="https://js.stripe.com/v3/"></script>
+</code></pre></div></article><article class="illustration illustration--apple cloud cloud--apple"><h1><p class="wrapper">It's fine!</p></h1></article><article class="center developer"><div class="wrapper">$ 99.99</div></article><article class="center need"><div class="wrapper"><ul class="need"><li>Merchant ID</li><li>Merchant Identity Certificate</li><li>Register and verify your domain</li><li>Payment Processing Certificate</li></ul></div></article><article class="center need"><div class="wrapper"><ul class="need"><li> Получить merchant id</li><li> Сгенерировать сертификат</li><li> Подтвердить владение доменом</li></ul></div></article><article class="screen screen--register"></article><article class="screen screen--certificate"></article><article class="center code-7"><div class="wrapper"><pre><code class="js">request.onmerchantvalidation =
+    async event => { … }
+request.onpaymentauthorized =
+    async event => { … }
+</code></pre></div></article><article class="center code-3"><div class="wrapper"><pre><code class="js">const response = await fetch('/validate', {
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  method: 'POST',
+  json: true,
+  body: JSON.stringify({ validationURL: event.validationURL }),
+});
+if (response.ok) {
+  return event.complete(response.json());
+}
+</code></pre></div></article><article class="center code-1"><div class="wrapper"><pre><code class="js">app.post('/bak', async (req, res, next) => {…}
+</code></pre></div></article><article class="center code-2"><div class="wrapper"><pre><code class="js">const certPath = resolve(__dirname, 'apple.cer');
+const keyPath = resolve(__dirname, 'apple.cer');
+const cert = fs.readFileSync(certPath);
+const key = fs.readFileSync(keyPath);
+const { validationURL } = req.body;
+const appleURL =
+    url.parse(`${validationURL}/paymentSession`);
+</code></pre></div></article><article class="center code-2"><pre><code class="js">const options = {
+  key,
+  cert,
+  hostname: appleURL.hostname,
+  path: appleURL.path,
+  method: 'POST',
+  "headers": {
+    "Content-Type": "application/json",
+  },
+  json: true,
+};
+</code></pre></article><article class="center code-2"><pre><code class="js">const POSTJSONString = JSON.stringify({
+  merchantIdentifier: 'merchant.moto.courses',
+  displayName: 'Moto Courses',
+  initiative: 'web',
+  initiativeContext: 'moto.courses',
+});
+const HTTPBody = Buffer.from(POSTJSONString, "utf8");
+</code></pre></article><article class="center code-2"><pre><code class="js">import https from 'https';
+…
+const request = https.request(
+    options,
+    function(responce) {…}
+);
+request.on('error', err => {…});
+request.write(HTTPBody);
+request.end();
+</code></pre></article><article class="center code-1"><pre><code class="js">responce.on('end', () => {
+    res.send(JSON.stringify(response));
+});
+</code></pre></article><article class="center error"><div class="wrapper">Error: error:0906D06C:PEM routines: PEM_read_bio:no start line</div></article><article class="center code-1"><pre><code class="bash">$ openssl
+    req -sha256 -nodes -newkey rsa:2048
+    -keyout applepaytls.key
+    -out applepaytls.csr
+$ openssl
+    x509 -inform der
+    -in certFromApple.cer
+    -out merchant_identity.pem
+</code></pre></article><article class="center code-2"><div class="wrapper"><pre><code class="js">const certPath =
+    resolve(__dirname, 'merchant_identity.pem');
+const keyPath =
+    resolve(__dirname, 'applepaytls.key');
+</code></pre></div></article><article class="screen screen--stripe"></article><article class="screen screen--bcp overlay"><div class="overlay__abstract overlay__abstract--right"><h3 class="overlay__title">Basic Card Payment</h3><img class="overlay__qr" src="images/bcp.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://www.w3.org/TR/payment-method-basic-card/" data-click>https://www.w3.org/TR/payment-method-basic-card/</a></p></div></article><article class="screen screen--pmi overlay"><div class="overlay__abstract overlay__abstract--right"><h3 class="overlay__title">Payment Method Identifiers</h3><img class="overlay__qr" src="images/pmi.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://www.w3.org/TR/payment-method-id/" data-click>https://www.w3.org/TR/payment-method-id/</a></p></div></article><article class="screen screen--pmm overlay"><div class="overlay__abstract overlay__abstract--right"><h3 class="overlay__title">Payment Method Manifest</h3><img class="overlay__qr" src="images/pmi.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://www.w3.org/TR/payment-method-manifest/" data-click>https://www.w3.org/TR/payment-method-manifest/</a></p></div></article><article class="screen screen--stripe"></article><article class="screen screen--stripe-atlas"></article><article class="screen screen--stripe-delawer"></article><article class="screen screen--stripe-product"></article><article class="screen screen--moto overlay"><div class="overlay__abstract overlay__abstract--right"><h3 class="overlay__title">MOTO.COURSES</h3><img class="overlay__qr" src="images/motoc.svg" alt="QRCODE cо ссылкой"><p><a class="overlay__link" href="https://moto.courses/" data-click>https://moto.courses/</a></p><p><a class="overlay__link" href="https://github.com/SilentImp/moto.courses" data-click>https://github.com/SilentImp/moto.courses</a></p></div></article><article class="center code-0"><div class="wrapper"><pre><code class="html">&lt;script src="https://js.stripe.com/v3/"></script>
 
 </code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="js">if (Stripe !== undefined) {
     const stripe = Stripe('pk_cQQjittH');
@@ -209,4 +275,4 @@ const fulfilledOrder = await stripe.orders
 
 res.send(JSON.stringify(fulfilledOrder))
     .status(200).end();
-</code></pre></div></article><article class="screen screen--letter"></article><article class="screen screen--ap1"></article><article class="screen screen--gp1"></article><article class="screen screen--gp2"></article><article class="screen screen--gp3"></article><article class="contacts center qrcode"><div class="wrapper"><div class="about-speaker half"><p class="name">Антон Немцев</p><p class="link">http://silentimp.info/</p><p class="twitter">@silentimp</p><p class="email">thesilentimp@gmail.com</p><p class="skype">skype: ravencry</p></div><div class="half"><img src="images/git.svg" alt="QRCODE cо ссылкой на доклад"></div><p><a href="https://github.com/SilentImp/LayoutTalk" data-click>https://goo.gl/y3lvfc</a></p></div></article></section></body></html>
+</code></pre></div></article><article class="screen screen--letter"></article><article class="screen screen--ap1"></article><article class="screen screen--ap2"></article><article class="screen screen--ap2-a"></article><article class="screen screen--ap2-b"></article><article class="screen screen--ap3"></article><article class="screen screen--gp1"></article><article class="screen screen--gp2"></article><article class="screen screen--gp3"></article><article class="contacts center qrcode"><div class="wrapper"><div class="about-speaker half"><p class="name">Антон Немцев</p><p class="link">http://silentimp.info/</p><p class="twitter">@silentimp</p><p class="email">thesilentimp@gmail.com</p><p class="skype">skype: ravencry</p></div><div class="half"><img src="images/git.svg" alt="QRCODE cо ссылкой на доклад"></div><p><a href="https://github.com/SilentImp/LayoutTalk" data-click>https://goo.gl/y3lvfc</a></p></div></article></section></body></html>

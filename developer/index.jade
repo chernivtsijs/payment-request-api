@@ -254,7 +254,7 @@ block slides
             ul.need
                 li  methodData
                 li  details
-                li  methooptionsdData
+                li  options
 
     article.center.code-6
         .wrapper
@@ -298,7 +298,7 @@ block slides
                         label: "Вотлшебный Говорящий Медведь-Проститутка",
                         amount: {
                           currency: "USD",
-                          value: "5.00"
+                          value: "0.99"
                         },
                       },
     article.center.code-1
@@ -320,7 +320,7 @@ block slides
                         label: "Всего",
                         amount: {
                           currency: "USD",
-                          value: "8.00"
+                          value: "3.99"
                         },
                       },
                     };
@@ -374,6 +374,149 @@ block slides
                         shippingAddress: null,
                         shippingOption: null,
                     }
+
+    article.illustration.illustration--apple.cloud.cloud--apple
+        h1
+            p.wrapper It's fine!
+
+    article.center.developer
+        .wrapper
+            | $ 99.99
+
+    article.center.need
+        .wrapper
+            ul.need
+                li Merchant ID
+                li Merchant Identity Certificate
+                li Register and verify your domain
+                li Payment Processing Certificate
+
+    article.center.need
+        .wrapper
+            ul.need
+                li  Получить merchant id
+                li  Сгенерировать сертификат
+                li  Подтвердить владение доменом
+
+    article.screen.screen--register
+
+    article.screen.screen--certificate
+
+    article.center.code-7
+        .wrapper
+            pre
+                code.js.
+                    request.onmerchantvalidation =
+                        async event => { … }
+                    request.onpaymentauthorized =
+                        async event => { … }
+
+    article.center.code-3
+        .wrapper
+            pre
+                code.js.
+                  const response = await fetch('/validate', {
+                    headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json'
+                    },
+                    method: 'POST',
+                    json: true,
+                    body: JSON.stringify({ validationURL: event.validationURL }),
+                  });
+                  if (response.ok) {
+                    return event.complete(response.json());
+                  }
+
+    article.center.code-1
+        .wrapper
+            pre
+                code.js.
+                    app.post('/bak', async (req, res, next) => {…}
+
+    article.center.code-2
+        .wrapper
+            pre
+                code.js.
+                    const certPath = resolve(__dirname, 'apple.cer');
+                    const keyPath = resolve(__dirname, 'apple.cer');
+                    const cert = fs.readFileSync(certPath);
+                    const key = fs.readFileSync(keyPath);
+                    const { validationURL } = req.body;
+                    const appleURL =
+                        url.parse(`${validationURL}/paymentSession`);
+
+    article.center.code-2
+            pre
+                code.js.
+                    const options = {
+                      key,
+                      cert,
+                      hostname: appleURL.hostname,
+                      path: appleURL.path,
+                      method: 'POST',
+                      "headers": {
+                        "Content-Type": "application/json",
+                      },
+                      json: true,
+                    };
+
+    article.center.code-2
+            pre
+                code.js.
+                    const POSTJSONString = JSON.stringify({
+                      merchantIdentifier: 'merchant.moto.courses',
+                      displayName: 'Moto Courses',
+                      initiative: 'web',
+                      initiativeContext: 'moto.courses',
+                    });
+                    const HTTPBody = Buffer.from(POSTJSONString, "utf8");
+
+    article.center.code-2
+            pre
+                code.js.
+                    import https from 'https';
+                    …
+                    const request = https.request(
+                        options,
+                        function(responce) {…}
+                    );
+                    request.on('error', err => {…});
+                    request.write(HTTPBody);
+                    request.end();
+
+    article.center.code-1
+            pre
+                code.js.
+                    responce.on('end', () => {
+                        res.send(JSON.stringify(response));
+                    });
+
+    article.center.error
+        .wrapper Error: error:0906D06C:PEM routines: PEM_read_bio:no start line
+
+    article.center.code-1
+        pre
+            code.bash.
+                $ openssl
+                    req -sha256 -nodes -newkey rsa:2048
+                    -keyout applepaytls.key
+                    -out applepaytls.csr
+                $ openssl
+                    x509 -inform der
+                    -in certFromApple.cer
+                    -out merchant_identity.pem
+
+    article.center.code-2
+        .wrapper
+            pre
+                code.js.
+                    const certPath =
+                        resolve(__dirname, 'merchant_identity.pem');
+                    const keyPath =
+                        resolve(__dirname, 'applepaytls.key');
+
+    article.screen.screen--stripe
 
     article.screen.screen--bcp.overlay
         .overlay__abstract.overlay__abstract--right
@@ -545,6 +688,14 @@ block slides
     article.screen.screen--letter
 
     article.screen.screen--ap1
+
+    article.screen.screen--ap2
+
+    article.screen.screen--ap2-a
+
+    article.screen.screen--ap2-b
+
+    article.screen.screen--ap3
 
     article.screen.screen--gp1
 
