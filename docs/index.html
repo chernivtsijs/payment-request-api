@@ -242,7 +242,7 @@ const keyPath =
 </code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="js">const response = await fetch('/skus');
 const sku = await response.json();
 </code></pre></div></article><article class="center code-2"><div class="wrapper"><pre><code class="js">const stripe = require('stripe')('sku_CckkusdfZ');
-stripe.skus.retrieve('sku_CckkusdfZ',
+stripe.skus.retrieve('sku_JENMndnU3jS',
   (error, sku) => {
     if (error === null) {
       res.send(JSON.stringify(sku)).status(200).end();
