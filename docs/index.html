@@ -97,7 +97,7 @@ button.addEventListener('click', check);
     label: "Вотлшебный Говорящий Медведь-Проститутка",
     amount: {
       currency: "USD",
-      value: "0.99"
+      value: "5.00"
     },
   },</code></pre></div></article><article class="center code-1"><div class="wrapper"><pre><code class="js">{
   label: "Cвинка",
@@ -109,7 +109,7 @@ button.addEventListener('click', check);
     label: "Всего",
     amount: {
       currency: "USD",
-      value: "3.99"
+      value: "8.00"
     },
   },
 };</code></pre></div></article><article class="center code-0"><div class="wrapper"><pre><code class="js">const options = {
@@ -152,7 +152,10 @@ button.addEventListener('click', pay);
 if (response.ok) {
   return event.complete(response.json());
 }
-</code></pre></div></article><article class="center code-1"><div class="wrapper"><pre><code class="js">app.post('/bak', async (req, res, next) => {…}
+</code></pre></div></article><article class="center code-1"><div class="wrapper"><pre><code class="js">app.post(
+    '/validate',
+    async (req, res, next) => {…}
+);
 </code></pre></div></article><article class="center code-2"><div class="wrapper"><pre><code class="js">const certPath = resolve(__dirname, 'apple.cer');
 const keyPath = resolve(__dirname, 'apple.cer');
 const cert = fs.readFileSync(certPath);
