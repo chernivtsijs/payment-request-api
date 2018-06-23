@@ -138,9 +138,7 @@ button.addEventListener('click', pay);
     shippingAddress: null,
     shippingOption: null,
 }
-</code></pre></div></article><article class="illustration illustration--apple cloud cloud--apple"><h1><p class="wrapper">It's fine!</p></h1></article><article class="center developer"><div class="wrapper">$ 99.99</div></article><article class="center need"><div class="wrapper"><ul class="need"><li>Merchant ID</li><li>Merchant Identity Certificate</li><li>Register and verify your domain</li><li>Payment Processing Certificate</li></ul></div></article><article class="center need"><div class="wrapper"><ul class="need"><li> Получить merchant id</li><li> Сгенерировать сертификат</li><li> Подтвердить владение доменом</li></ul></div></article><article class="screen screen--register"></article><article class="screen screen--certificate"></article><article class="center code-7"><div class="wrapper"><pre><code class="js">request.onmerchantvalidation =
-    async event => { … }
-request.onpaymentauthorized =
+</code></pre></div></article><article class="illustration illustration--apple cloud cloud--apple"><h1><p class="wrapper">It's fine!</p></h1></article><article class="center developer"><div class="wrapper">$ 99.99</div></article><article class="center need"><div class="wrapper"><ul class="need"><li>Merchant ID</li><li>Merchant Identity Certificate</li><li>Register and verify your domain</li></ul></div></article><article class="screen screen--register"></article><article class="screen screen--certificate"></article><article class="center code-7"><div class="wrapper"><pre><code class="js">request.onmerchantvalidation =
     async event => { … }
 </code></pre></div></article><article class="center code-3"><div class="wrapper"><pre><code class="js">const response = await fetch('/validate', {
   headers: {

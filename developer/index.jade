@@ -389,14 +389,14 @@ block slides
                 li Merchant ID
                 li Merchant Identity Certificate
                 li Register and verify your domain
-                li Payment Processing Certificate
+                //- li Payment Processing Certificate
 
-    article.center.need
-        .wrapper
-            ul.need
-                li  Получить merchant id
-                li  Сгенерировать сертификат
-                li  Подтвердить владение доменом
+    //- article.center.need
+    //-     .wrapper
+    //-         ul.need
+    //-             li  Получить merchant id
+    //-             li  Сгенерировать сертификат
+    //-             li  Подтвердить владение доменом
 
     article.screen.screen--register
 
@@ -408,8 +408,9 @@ block slides
                 code.js.
                     request.onmerchantvalidation =
                         async event => { … }
-                    request.onpaymentauthorized =
-                        async event => { … }
+
+            //- request.onpaymentauthorized =
+            //-     async event => { … }
 
     article.center.code-3
         .wrapper
