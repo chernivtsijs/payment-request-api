@@ -847,6 +847,10 @@ ul.need li {
   font-size: 64px;
   line-height: 72px;
 }
+.illustration--pumb {
+  background-image: url("../images/pumb.svg");
+  background-size: 600px auto;
+}
 .illustration--grid-scheme {
   background-image: url("../images/grid-scheme.png");
 }
